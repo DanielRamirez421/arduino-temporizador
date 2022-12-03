@@ -1,17 +1,18 @@
 #include "temporizador.h"
 
+String startTime = "18:30:00";
+String endTime   = "23:59:00";
 
 void setup() {
   initRTC();
 }
 
 void loop() {
-  // Serial.println(getStrDate());
-  // digitalWrite(13, true);
-  // delay(250);
-  // digitalWrite(13, false);
-  // delay(250);
+  // digitalWrite(13, isTimeBetween(startTime, endTime, getSimulatedTime()));
+  // Serial.println( getSimulatedTime() );
+  // delay(1);
 
-  Serial.println( getSimulatedTime() );
-  delay(100);
+  digitalWrite(13, isTimeBetween(startTime, endTime, getStrDate()));
+  Serial.println( getStrDate() );
+  delay(1000);
 }
