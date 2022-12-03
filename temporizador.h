@@ -1,16 +1,24 @@
 #include <DS3232RTC.h>
 #include "simulador.h"
+#include "ledIndicator.h"
 
 DS3232RTC RTC;
 
-void initRTC() {
+int pinSwitch = A0;
+
+boolean initRTC() {
+  pinMode(pinSwitch, OUTPUT);
+
   Serial.begin(115200);
   RTC.begin();
   setSyncProvider(RTC.get);  // the function to get the time from the RTC
-  if (timeStatus() != timeSet)
+
+  if (timeStatus() != timeSet) {
     Serial.println("Unable to sync with the RTC");
-  else
-    Serial.println("RTC has set the system time");
+    return false;
+  } else {
+    return true;
+  }
 }
 
 String getStrDate() {
