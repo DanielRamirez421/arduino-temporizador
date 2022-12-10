@@ -1,8 +1,11 @@
 const int ledPin = LED_BUILTIN;
 int ledState = LOW;
 unsigned long previousMillis = 0;  
-const long intervalError = 150;
-const long intervalSuccess = 1000;
+
+
+const long intervalClockError = 150;
+const long intervalClockisConnected = 3000;
+const long intervalIsSwitchActivated = 1000;
 
 int ledIndicatorGND = A1;
 int ledIndicator = A2;

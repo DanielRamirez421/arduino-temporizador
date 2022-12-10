@@ -4,21 +4,31 @@
 
 DS3232RTC RTC;
 
-int pinSwitch = A0;
+int pinSwitch = A3;
+boolean isReleActivatedWithVCC = false;
 
 boolean initRTC() {
-  pinMode(pinSwitch, OUTPUT);
-
   Serial.begin(115200);
-  RTC.begin();
-  setSyncProvider(RTC.get);  // the function to get the time from the RTC
 
-  if (timeStatus() != timeSet) {
-    Serial.println("Unable to sync with the RTC");
-    return false;
-  } else {
-    return true;
+  pinMode(pinSwitch, OUTPUT);
+  if (!isReleActivatedWithVCC) {
+    digitalWrite( pinSwitch, HIGH );
   }
+
+  RTC.begin();
+  while (timeStatus() != timeSet) {
+    setSyncProvider(RTC.get);  // the function to get the time from the RTC
+    delay(1000);
+  }
+
+  return true;
+
+  // if (timeStatus() != timeSet) {
+  //   Serial.println("Unable to sync with the RTC");
+  //   return false;
+  // } else {
+  //   return true;
+  // }
 }
 
 String getStrDate() {

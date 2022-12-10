@@ -9,6 +9,8 @@ String getSimulatedTime() {
   secondSim++;
   secondSim++;
   secondSim++;
+  secondSim++;
+  secondSim++;
 
   if (secondSim == 60) {
     secondSim = 0;
