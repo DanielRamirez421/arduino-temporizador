@@ -1,22 +1,26 @@
 const int ledPin = LED_BUILTIN;
 int ledState = LOW;
-unsigned long previousMillis = 0;  
+unsigned long previousMillis = 0;
 
-
-const long intervalClockError = 150;
-const long intervalClockisConnected = 3000;
-const long intervalIsSwitchActivated = 1000;
+const long intervalClockError = 100;
+const long intervalClockisConnected = 1000;
+const long intervalIsSwitchActivated = 200;
 
 int ledIndicatorGND = A1;
 int ledIndicator = A2;
 
-void blinkLed( long interval ) {
+void blinkLed(long interval)
+{
   unsigned long currentMillis = millis();
-  if (currentMillis - previousMillis >= interval) {
+  if (currentMillis - previousMillis >= interval)
+  {
     previousMillis = currentMillis;
-    if (ledState == LOW) {
+    if (ledState == LOW)
+    {
       ledState = HIGH;
-    } else {
+    }
+    else
+    {
       ledState = LOW;
     }
     digitalWrite(ledPin, ledState);
@@ -24,7 +28,8 @@ void blinkLed( long interval ) {
   }
 }
 
-void initLetIndicator() {
+void initLetIndicator()
+{
   pinMode(ledIndicator, OUTPUT);
   pinMode(ledIndicatorGND, OUTPUT);
   digitalWrite(ledIndicator, LOW);

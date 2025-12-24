@@ -7,7 +7,7 @@ Este proyecto de Arduino implementa un temporizador que enciende un relé en un 
 El código utiliza las siguientes variables para configurar el temporizador:
 
 String `startTime` = "18:00:00";
-String `endTime`   = "23:59:00";
+String `endTime` = "23:59:00";
 
 ## Simulación del tiempo
 
@@ -16,7 +16,8 @@ El código incluye una bandera llamada `isTimeSimulated` que permite habilitar l
 ## Consideraciones
 
 No olvidar instalar las librerías:
-- `https://github.com/JChristensen/DS3232RTC`
-- `https://github.com/janelia-arduino/Streaming`
+
+- `https://github.com/JChristensen/DS3232RTC` => V2.0.0
+- `https://github.com/janelia-arduino/Streaming` => Descargar .zip y cargarlo en el IDE
 
 Para configurar el reloj a la hora actual y para compilar y subir el código del temporizador al arduino.
